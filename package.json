@@ -4,7 +4,7 @@
   "bin": {
     "generate": "generator-run"
   },
-  "description": "React Redux Module Based Generator. This module created to help developers avoid redudent work releated with component, module, container... gcreation.",
+  "description": "React Redux Module Based Generator. This module created to help developers avoid redudent work releated with component, module, container... generation.",
   "main": "./generators/index.js",
   "scripts": {
     "generate": "plop --plopfile generators/index.js",
@@ -14,8 +14,26 @@
     "generate:page": "plop --plopfile generators/index.js page",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Vladimir Hovsepyan",
+    "email": "vladimirhovsepyan@gmail.com"
+  },
+  "homepage": "https://github.com/vladimir2492/rrmb-generator",
+  "keywords": [
+    "generator",
+    "react",
+    "module",
+    "container",
+    "component",
+    "page",
+    "redux"
+  ],
+  "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vladimir2492/rrmb-generator.git"
+  },
+  "license": "MIT",
   "devDependencies": {
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^4.0.0",
