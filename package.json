@@ -28,7 +28,6 @@
     "page",
     "redux"
   ],
-  "readme": "README.md",
   "repository": {
     "type": "git",
     "url": "git://github.com/vladimir2492/rrmb-generator.git"
