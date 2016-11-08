@@ -1,0 +1,37 @@
+{{#if wantPropTypes}}
+import React, { PropTypes, Component } from 'react';
+{{else}}
+import React, { Component } from 'react';
+{{/if}}
+{{#if wantSCSSModules}}
+import styles from './{{ properCase name }}.scss';
+import cssModules from 'react-css-modules';
+{{/if}}
+
+class {{ properCase name }} extends Component { // eslint-disable-line react/prefer-stateless-function
+
+  //Props Types
+  static propTypes = {
+  }
+
+  //Default Props Value
+  static defaultProps = {
+  };
+
+  render() {
+    return (
+      {{#if wantSCSSModules}}
+      <div className={{curly true}}styles.{{ camelCase name }}{{curly}}>
+      {{else}}
+      <div>
+      {{/if}}
+      </div>
+    );
+  }
+}
+
+{{#if wantSCSSModules}}
+export default cssModules({{ properCase name }}, styles);
+{{else}}
+export default {{ properCase name }};
+{{/if}}

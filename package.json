@@ -1,0 +1,31 @@
+{
+  "name": "rrmb-generator",
+  "version": "1.0.0",
+  "bin": {
+    "generate": "generator-run"
+  },
+  "description": "React Redux Module Based Generator. This module created to help developers avoid redudent work releated with component, module, container... gcreation.",
+  "main": "./generators/index.js",
+  "scripts": {
+    "generate": "plop --plopfile generators/index.js",
+    "generator": "npm run generate",
+    "generate:component": "plop --plopfile generators/index.js component",
+    "generate:container": "plop --plopfile generators/index.js container",
+    "generate:page": "plop --plopfile generators/index.js page",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^4.0.0",
+    "eslint-loader": "^1.1.1",
+    "eslint-plugin-react": "^3.11.3",
+    "plop": "1.5.0"
+  },
+  "dependencies": {
+    "app-root-path": "^2.0.1",
+    "mkdirp": "^0.5.1",
+    "plop": "^1.5.0"
+  }
+}
