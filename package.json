@@ -2,7 +2,7 @@
   "name": "rrmb-generator",
   "version": "2.1.2",
   "bin": {
-    "generate": "generator"
+    "generate": "generator-run"
   },
   "description": "React Redux Module Based Generator. This module created to help developers avoid redudent work releated with component, module, container... generation.",
   "main": "./generators/index.js",

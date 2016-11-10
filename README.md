@@ -4,7 +4,7 @@ Generator for module based code for redux, Inspired by scalable-react-boilerplat
 ## Install
 `npm install rrmb-generator`
 
-Open package json and add add generate command under the scripts option
+Open package json and add generate command within the scripts option
 ```
 "scripts": {
     "generate": "generate",
@@ -56,7 +56,8 @@ The generators use the same feature-first file organization as the rest of the p
 ## Configs
 The generators output paths can be configured in two ways.
 
-1) package.json
+package.json
+
 You just need create rrmb properties in package.json file and give relative paths
 ```
  "rrmb": {
@@ -66,8 +67,10 @@ You just need create rrmb properties in package.json file and give relative path
   }
 ```
 
-2) .rrmb
+ .rrmb
+ 
 Create ".rrmb" file in the root directory (where package.json is)
+
 Set your custom configs there as json data
 ```
 {
