@@ -3,11 +3,16 @@ Generator for module based code for redux, Inspired by scalable-react-boilerplat
 
 ## Install
 `npm install rrmb-generator`
+
 Open package json and add add generate command under the scripts option
+```
 "scripts": {
     "generate": "generate",
+    "generate:component": "npm run generate component",
+    "generate:container": "npm run generate container",
+    "generate:page": "npm run generate page"
 }
-
+```
 
 ## Why
 There are different typef of generator to help create react and redux based application.
@@ -47,3 +52,32 @@ npm run generate:<type_of_component>
 where <type_of_component> is one of: component, container or page. 
 
 The generators use the same feature-first file organization as the rest of the project, encapsulating components within their own folder.
+
+## Configs
+The generators output paths can be configured in two ways.
+
+1) package.json
+You just need create rrmb properties in package.json file and give relative paths
+```
+ "rrmb": {
+    "paths": {
+      "componentsDir": "src/components/"
+    }
+  }
+```
+
+2) .rrmb
+Create ".rrmb" file in the root directory (where package.json is)
+Set your custom configs there as json data
+```
+{
+	"paths": {
+		"componentsDir": "src/components/",
+		"containersDir": "src/containers/",
+		"pagesDir": "src/pages/",
+		"modulesDir": "src/modules/",
+		"testRootDir": "__test__/",
+		"routeFile": "src/routes.js"
+	}
+}
+```

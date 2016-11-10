@@ -1,6 +1,4 @@
-/**
- * Page Generator
- */
+const path = require('path');
 const config = require('../config');
 const componentNameCheck = require('../utils/componentNameCheck');
 const trimTemplateFile = require('../utils/trimTemplateFile');
@@ -15,7 +13,7 @@ module.exports = {
       default: 'About',
       validate: (value) => {
         if ((/.+/).test(value)) {
-          return componentNameCheck(value) ?
+          return componentNameCheck(value + 'Page.js') ?
             'That component already exists. Please choose another name for your page component.' : true;
         }
         return 'The name is required.';

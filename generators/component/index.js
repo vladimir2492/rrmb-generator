@@ -84,7 +84,7 @@ module.exports = {
       data.releativeTestToComponentPath = path.relative(testFileDir, config.absPaths.componentsDir);;
       actions.push({
         type: 'add',
-        path: testFileDir + '{{properCase name}}.js',
+        path: testFileDir + '/{{properCase name}}.js',
         templateFile: './component/test.js.hbs',
         abortOnFail: true,
       });

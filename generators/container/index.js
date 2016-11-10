@@ -1,3 +1,4 @@
+const path = require('path');
 const config = require('../config');
 const componentNameCheck = require('../utils/componentNameCheck');
 const trimTemplateFile = require('../utils/trimTemplateFile');
@@ -12,7 +13,7 @@ module.exports = {
       default: 'Scalable',
       validate: value => {
         if ((/.+/).test(value)) {
-          return componentNameCheck(value) ? 'A container with this name already exists' : true;
+          return componentNameCheck(value + 'Container.js') ? 'A container with this name already exists' : true;
         }
 
         return 'The name is required';
