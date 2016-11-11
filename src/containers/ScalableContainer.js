@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
-{{#if wantModule}}
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actions } from '{{containerModuleReleativePath}}/{{lowerCase name}}-module';
-{{/if}}
+import { actions } from '../modules/scalable-module';
 
-class {{ properCase name }} extends Component { // eslint-disable-line react/prefer-stateless-function
+class Scalable extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      {{#if wantSCSSModules}}
-      <div className={{curly true}}styles.{{ camelCase name }}{{curly}}>
-      {{else}}
       <div>
-      {{/if}}
       </div>
     );
   }
 }
 
-{{#if wantModule}}
 // mapStateToProps :: {State} -> {Props}
 const mapStateToProps = (state) => ({
   // myProp: state.myProp,
@@ -31,16 +24,11 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch
   ),
 });
-{{/if}}
 
-const Container = {{ properCase name }};
+const Container = Scalable;
 
 
-{{#if wantModule}}
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Container);
-{{else}}
-export default Container;
-{{/if}}

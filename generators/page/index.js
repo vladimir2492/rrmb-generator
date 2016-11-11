@@ -75,16 +75,16 @@ module.exports = {
     }
 
     if(data.tryAddRoute) {
-      data.releativePageToRoutePath = path.relative(config.absPaths.routePath, pagesDir);;
+      data.releativePageToRoutePath = path.relative(config.absPaths.routeFile, pagesDir);
 
-      if(!config.isFileExist(config.absPaths.routePath)) {
-        throw "Route file not found";
+      if(!config.isFileExist(config.absPaths.routeFile)) {
+        throw new Error("Route file not found");
       }
 
      actions.push({
         type: 'modify',
-        path: config.absPaths.routePath,
-        pattern: /(\/\/NEXT ROUTE)/g,
+        path: config.absPaths.routeFile,
+        pattern: /(BOT: NEXT ROUTE)/g,
         template: trimTemplateFile('generators/page/route.js.hbs'),
       });
 

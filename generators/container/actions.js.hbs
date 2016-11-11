@@ -1,5 +1,28 @@
-export const {{ camelCase name }}Action = () => ({
-  type: {{ uppercase name }}_ACTION,
-});
+import { createAction } from 'redux-action'
 
-$1
+{{#each actionsNames}}
+export const {{ constantCase name }}_ACTION = '{{ constantCase name }}_ACTION';
+{{/each}}
+
+
+{{#each actionsNames}}
+{{#if sync}}
+const {{ properCase name }}Action = createAction( {{ constantCase name }}_ACTION, data => data );
+{{/if}}
+{{#if async}}
+const {{ properCase name }}Action = createAction( {{ constantCase name }}_ACTION, (data) => {
+    // ...
+    return Promise.resolve(data)
+})
+{{/if}}
+
+{{/each}}
+
+
+export const actions = {
+{{#each actionsNames}}
+    {{ properCase name }}Action,
+{{/each}}
+};
+
+//Further code goes here

@@ -3,13 +3,12 @@ const initialState = {
   // Initial State goes here!
 };
 
-const {{ camelCase name }}Reducer =
-  (state = initialState, action) => {
+const {{ camelCase name }}Reducer = (state = initialState, action) => {
     switch (action.type) {
-      case DEFAULT_ACTION:
-        return state;
-      default:
-        return state;
+        {{#each actionsNames}}
+        case {{ constantCase name }}_ACTION:
+            return state;
+        {{/each}}
     }
 };
 

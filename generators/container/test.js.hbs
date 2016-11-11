@@ -1,0 +1,46 @@
+import reducer, {actions} from '{{testModuleReleativePath}}'
+
+export const {{ camelCase name }}Action = createAction( {{ uppercase name }}_ACTION, data => data );
+export const {{ camelCase name }}AsyncAction = createAction( {{ uppercase name }}_ASYNC_ACTION,
+
+describe('{{ properCase name }} tests', () => {
+    it('Should export a constants.', () => {
+        expect(actions.{{ camelCase name }}Action).to.equal('{{ camelCase name }}_ACTION')
+        expect(actions.{{ camelCase name }}Action).to.equal('{{ camelCase name }}_ASYNC_ACTION')
+        expect(CLOSE_POPUP).to.equal('CLOSE_POPUP')
+    })
+})
+
+describe('(Reducer)', () => {
+it('Should be a function.', () => {
+expect(popupReducer).to.be.a('function')
+})
+
+it('Should initialize with a defined data.', () => {
+expect(popupReducer(undefined, {})).to.equal(false)
+})
+
+it('Should return the previous state if an action was not matched.', () => {
+let state = popupReducer(undefined, {})
+expect(state).to.equal(false)
+state = popupReducer(state, {type: '@@@@@@@'})
+expect(state).to.equal(false)
+})
+})
+
+describe('(Actions) Check all actions work properly', () => {
+let state = popupReducer(undefined, {})
+expect(state).to.equal(false)
+
+it('Check openPopup action', () => {
+state = popupReducer(state, openPopup( ))
+expect(state).to.be.true;
+})
+
+it('Check closePopup action', () => {
+state = popupReducer(state, closePopup())
+expect(state).to.be.false;
+})
+
+})
+

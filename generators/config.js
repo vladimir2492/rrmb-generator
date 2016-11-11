@@ -37,6 +37,10 @@ const isFileExist = (filePath) => {
     }
 }
 
+const options = objectAssign( {}, {
+    wantRootReducerDefault: true
+}, rrmbPJ.options, externalConfig.options );
+
 const paths = objectAssign( {}, {
     componentsDir: 'app/src/components/',
     containersDir: 'app/src/containers/',
@@ -44,6 +48,7 @@ const paths = objectAssign( {}, {
     modulesDir: 'app/src/modules/',
     testRootDir: '__test__/',
     routeFile: 'app/src/routes.js',
+    rootReducerPath: "src/reducer.js",
 }, rrmbPJ.paths, externalConfig.paths );
 
 const functions = {
@@ -54,9 +59,13 @@ const functions = {
 const getAbsPath = (obj) => {
     const results = {};
     for(const str in obj) {
-        results[str] = path.resolve(obj[str]) + '/';
+        results[str] = path.resolve(obj[str]);
+        console.log(str, obj[str].lastIndexOf('.js'), obj[str].length, obj[str].lastIndexOf('.js') === obj[str].length - 3)
+        if (obj[str].lastIndexOf('.js') !== obj[str].length - 3)  {
+            results[str] += '/';
+        }
     }
     return results;
 }
 
-module.exports = Object.assign({}, functions, {paths, absPaths: getAbsPath(paths)});
+module.exports = Object.assign({}, functions, {paths, absPaths: getAbsPath(paths), options});
