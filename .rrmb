@@ -5,6 +5,7 @@
 		"pagesDir": "src/pages/",
 		"modulesDir": "src/modules/",
 		"testRootDir": "__test__/",
-		"routeFile": "src/routes.js"
+		"routeFile": "src/routes.js",
+		"rootReducerPath": "src/reducer.js"
 	}
 }
