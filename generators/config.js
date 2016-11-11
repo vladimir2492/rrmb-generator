@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const objectAssign = require('object-assign');
 
-let rrmbPJ = {};
+var rrmbPJ = {};
 try{
     const packageJSON = require(path.resolve('package.json'));
     rrmbPJ = (packageJSON && packageJSON.rrmb) || {};
@@ -10,13 +10,13 @@ try{
 
 }
 
-let externalConfig = {};
+var externalConfig = {};
 try {
     console.log(path.resolve('.rrmb'));
 
     externalConfig = JSON.parse(fs.readFileSync(path.resolve('.rrmb'), 'utf8'));
 }catch(err) {
-    console.warn("Missing config file or it is not valid.", err);
+    console.warn("Missing config file or it is not valid.");
 }
 
 const isDirExist = (filePath) => {
