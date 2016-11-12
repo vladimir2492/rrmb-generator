@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
+{{#if notNewComponent}}
+import {{ properCase componentName }}Component from '{{componentReleativePath}}';
+{{/if}}
 {{#if wantModule}}
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions } from '{{containerModuleReleativePath}}/{{lowerCase name}}-module';
 {{/if}}
 
+{{#if newComponent}}
 class {{ properCase name }} extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      {{#if wantSCSSModules}}
-      <div className={{curly true}}styles.{{ camelCase name }}{{curly}}>
-      {{else}}
       <div>
-      {{/if}}
+        {{ properCase name }} ready
       </div>
     );
   }
 }
+{{/if}}
 
 {{#if wantModule}}
 // mapStateToProps :: {State} -> {Props}
@@ -33,7 +35,12 @@ const mapDispatchToProps = (dispatch) => ({
 });
 {{/if}}
 
+{{#if newComponent}}
 const Container = {{ properCase name }};
+{{/if}}
+{{#if notNewComponent}}
+const Container = {{ properCase componentName }}Component;
+{{/if}}
 
 
 {{#if wantModule}}

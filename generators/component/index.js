@@ -47,6 +47,11 @@ module.exports = {
       templateFile: data.type === 'ES6 Class' ?
         './component/es6class.js.hbs' : './component/stateless.js.hbs',
       abortOnFail: true,
+    },{
+      type: 'add',
+      path: componentsDir + '{{properCase name}}/index.js',
+      templateFile: './component/component_export.js.hbs',
+      abortOnFail: true,
     }];
 
     // If they want a CSS file, add styles.css
@@ -84,7 +89,7 @@ module.exports = {
       data.releativeTestToComponentPath = path.relative(testFileDir, config.absPaths.componentsDir);;
       actions.push({
         type: 'add',
-        path: testFileDir + '/{{properCase name}}.js',
+        path: testFileDir + '{{properCase name}}.js',
         templateFile: './component/test.js.hbs',
         abortOnFail: true,
       });

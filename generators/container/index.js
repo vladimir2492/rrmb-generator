@@ -20,6 +20,19 @@ module.exports = {
       },
     },
     {
+      type: 'input',
+      name: 'componentName',
+      message: 'For what component this container made for? Leave it empty if there is no component for it.',
+      default: '',
+      validate: value => {
+        if (!value) {
+          return true;
+        }
+
+        return componentNameCheck(value, 1) ? true : 'A component with this name note exists';
+      },
+    },
+    {
       type: 'confirm',
       name: 'wantModule',
       default: true,
@@ -66,6 +79,17 @@ module.exports = {
       });
     }
 
+    data.newComponent = true;
+    data.notNewComponent = false;
+    if (data.componentName) {
+      data.newComponent = false;
+      data.notNewComponent = true;
+      const componentName = data.componentName;
+      const componentPath = config.absPaths.componentsDir + componentName;
+      const componentReleativePath = path.relative(containersDir, componentPath);
+      data.componentReleativePath = componentReleativePath;
+    }
+
     // If they want actions and a reducer, generate module.js and the corresponding tests for actions and the reducer
     if (data.wantModule) {
 
@@ -77,6 +101,8 @@ module.exports = {
         const async = actionName.indexOf('+') == 0;
         actionName = actionName.replace(/^[+]?/g, '');
         return {name: actionName, sync: !async, async};
+      }).filter( action => {
+        return action.name;
       });
       data.actionsNames = actionsNames;
       console.log(actionsNames);
@@ -123,16 +149,7 @@ import {{lowerCase name}}Reducer from '{{rootReducerReleativePath}}/{{lowerCase 
       actions.push({
         type: 'add',
         path: modulePath,
-        templateFile: './container/actions.js.hbs',
-        abortOnFail: true,
-      });
-
-      // Reducer
-      actions.push({
-        type: 'modify',
-        path: modulePath,
-        templateFile: './container/reducer.js.hbs',
-        pattern: /(\/\/Further code goes here)/g,
+        templateFile: './container/module.js.hbs',
         abortOnFail: true,
       });
 

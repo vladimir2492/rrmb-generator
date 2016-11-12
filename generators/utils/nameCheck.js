@@ -12,7 +12,7 @@ const getFilesNames = (dirs) => {
 
 const nameCheckDir = (component, dirs) => {
   const components = getFilesNames(dirs);
-  console.log("Componenets", components);
+  console.log(components)
   return components.indexOf(component) >= 0;
 }
 
