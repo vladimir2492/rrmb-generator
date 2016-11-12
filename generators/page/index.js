@@ -75,7 +75,7 @@ module.exports = {
     }
 
     if(data.tryAddRoute) {
-      data.releativePageToRoutePath = path.relative(config.absPaths.routeFile, pagesDir);
+      data.releativePageToRoutePath = config.prepareReleativePath( path.relative(config.absPaths.routeFile, pagesDir) );
 
       if(!config.isFileExist(config.absPaths.routeFile)) {
         throw new Error("Route file not found");

@@ -28,6 +28,10 @@ const isDirExist = (filePath) => {
     }
 }
 
+const prepareReleativePath = (filePath) => {
+    return filePath.replace(/[\\]/g, '/')
+}
+
 const isFileExist = (filePath) => {
     try {
         return fs.statSync(filePath).isFile();
@@ -49,12 +53,13 @@ const paths = objectAssign( {}, {
     modulesDir: 'app/src/modules/',
     testRootDir: '__test__/',
     routeFile: 'app/src/routes.js',
-    rootReducerPath: "src/reducer.js",
+    rootReducerPath: "app/src/reducer.js",
 }, rrmbPJ.paths, externalConfig.paths );
 
 const functions = {
     isDirExist,
-    isFileExist
+    isFileExist,
+    prepareReleativePath
 };
 
 const getAbsPath = (obj) => {

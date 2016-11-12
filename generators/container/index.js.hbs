@@ -5,7 +5,7 @@ import {{ properCase componentName }}Component from '{{componentReleativePath}}'
 {{#if wantModule}}
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actions } from '{{containerModuleReleativePath}}/{{lowerCase name}}-module';
+import { actions } from '{{containerModuleReleativePath}}/{{dashCase name}}-module';
 {{/if}}
 
 {{#if newComponent}}

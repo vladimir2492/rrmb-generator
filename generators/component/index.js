@@ -86,7 +86,7 @@ module.exports = {
 
     if(data.wantTest) {
       const testFileDir = config.absPaths.testRootDir + path.normalize(config.paths.componentsDir);
-      data.releativeTestToComponentPath = path.relative(testFileDir, config.absPaths.componentsDir);;
+      data.releativeTestToComponentPath = config.prepareReleativePath( path.relative(testFileDir, config.absPaths.componentsDir) );
       actions.push({
         type: 'add',
         path: testFileDir + '{{properCase name}}.js',

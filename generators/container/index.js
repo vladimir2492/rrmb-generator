@@ -86,7 +86,7 @@ module.exports = {
       data.notNewComponent = true;
       const componentName = data.componentName;
       const componentPath = config.absPaths.componentsDir + componentName;
-      const componentReleativePath = path.relative(containersDir, componentPath);
+      const componentReleativePath = config.prepareReleativePath(path.relative(containersDir, componentPath));
       data.componentReleativePath = componentReleativePath;
     }
 
@@ -108,13 +108,13 @@ module.exports = {
       console.log(actionsNames);
 
       const modulePathDir = config.absPaths.modulesDir;
-      const modulePath = modulePathDir + '{{lowerCase name}}-module.js';
-      const containerModuleReleativePath = path.relative(containersDir, modulePathDir);
+      const modulePath = modulePathDir + '{{dashCase name}}-module.js';
+      const containerModuleReleativePath = config.prepareReleativePath(path.relative(containersDir, modulePathDir));
       data.containerModuleReleativePath = containerModuleReleativePath;
 
       if (data.wantRootReducer) {
         const rootReducerPath = config.absPaths.rootReducerPath;
-        const rootReducerReleativePath = path.relative(path.dirname(config.absPaths.rootReducerPath), modulePathDir);
+        const rootReducerReleativePath = config.prepareReleativePath( path.relative(path.dirname(config.absPaths.rootReducerPath), modulePathDir) );
         data.rootReducerReleativePath = rootReducerReleativePath;
 
         if(!config.isFileExist(rootReducerPath)) {
@@ -132,7 +132,7 @@ module.exports = {
           pattern: /(BOT: Reducer list here)/g,
           template:
               `$1
-  {{lowerCase name}}: {{lowerCase name}}Reducer,`,
+  {{camelCase name}}: {{camelCase name}}Reducer,`,
           abortOnFail: true,
         }, {
           type: 'modify',
@@ -140,7 +140,7 @@ module.exports = {
           pattern: /(BOT: Reducer imports here)/g,
           template:
               `$1
-import {{lowerCase name}}Reducer from '{{rootReducerReleativePath}}/{{lowerCase name}}-module'`,
+import {{camelCase name}}Reducer from '{{rootReducerReleativePath}}/{{dashCase name}}-module'`,
           abortOnFail: true,
         });
 
