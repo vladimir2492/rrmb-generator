@@ -38,7 +38,8 @@ const isFileExist = (filePath) => {
 }
 
 const options = objectAssign( {}, {
-    wantRootReducerDefault: true
+    wantRootReducerDefault: true,
+    addPageRouteDefault: false,
 }, rrmbPJ.options, externalConfig.options );
 
 const paths = objectAssign( {}, {

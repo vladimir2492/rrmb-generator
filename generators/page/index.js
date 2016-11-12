@@ -1,6 +1,6 @@
 const path = require('path');
 const config = require('../config');
-const componentNameCheck = require('../utils/componentNameCheck');
+const pagesNameCheck = require('../utils/pageNameCheck');
 const trimTemplateFile = require('../utils/trimTemplateFile');
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
       default: 'About',
       validate: (value) => {
         if ((/.+/).test(value)) {
-          return componentNameCheck(value + 'Page.js') ?
+          return pagesNameCheck(value + 'Page') ?
             'That component already exists. Please choose another name for your page component.' : true;
         }
         return 'The name is required.';
@@ -33,7 +33,7 @@ module.exports = {
     },  {
       type: 'confirm',
       name: 'tryAddRoute',
-      default: false,
+      default: config.options.addPageRouteDefault,
       message: 'Try add route to this page?',
     },
   ],
@@ -55,13 +55,13 @@ module.exports = {
       abortOnFail: true,
     }];
 
-    if(config.isFileExist(pagesDir + 'export.js')) {
-      const exportPath = path.resolve(__dirname + '/index.js.hbs');
+    if(config.isFileExist(pagesDir + 'index.js')) {
+      const exportPath = path.resolve(__dirname + '/export.js.hbs');
       // Add container export to index.js in container root folder
       actions.push({
         type: 'modify',
         path: pagesDir + 'index.js',
-        pattern: /(\/\* Assemble all pages for export \*\/)/g,
+        pattern: /(BOT: New pages goes here)/g,
         template: trimTemplateFile(exportPath),
       });
     }else {
@@ -69,7 +69,7 @@ module.exports = {
       actions.push({
         type: 'add',
         path: pagesDir + 'index.js',
-        templateFile: './component/export_new.js.hbs',
+        templateFile: './page/export_new.js.hbs',
       });
 
     }
@@ -81,13 +81,13 @@ module.exports = {
         throw new Error("Route file not found");
       }
 
-     actions.push({
+      const routeTemplatePath = path.resolve(__dirname + '/route.js.hbs');
+      actions.push({
         type: 'modify',
         path: config.absPaths.routeFile,
         pattern: /(BOT: NEXT ROUTE)/g,
-        template: trimTemplateFile('generators/page/route.js.hbs'),
+        template: trimTemplateFile(routeTemplatePath),
       });
-
 
     }
 

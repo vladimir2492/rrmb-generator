@@ -54,7 +54,7 @@ module.exports = {
       actions.push({
         type: 'modify',
         path: containersDir + 'index.js',
-        pattern: /(\/\* Assemble all containers for export \*\/)/g,
+        pattern: /(BOT: New containers goes here)/g,
         template: trimTemplateFile(exportPath),
       });
     }else {

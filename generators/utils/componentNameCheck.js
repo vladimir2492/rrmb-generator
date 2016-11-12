@@ -1,12 +1,9 @@
 const fs = require('fs');
 const config = require('./../config');
-
-const pageComponents = config.isDirExist(config.absPaths.componentsDir) ? fs.readdirSync(config.absPaths.componentsDir) : [];
-const pageContainers = config.isDirExist(config.absPaths.containersDir) ? fs.readdirSync(config.absPaths.containersDir) : []
-const components = pageComponents.concat(pageContainers);
+const nameCheck = require('./nameCheck');
 
 const componentNameCheck = (component) => {
-  return components.indexOf(component) >= 0;
+  return nameCheck(component, [config.absPaths.componentsDir, config.absPaths.containersDir]);
 }
 
 module.exports = componentNameCheck;

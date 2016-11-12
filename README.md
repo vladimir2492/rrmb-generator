@@ -53,6 +53,29 @@ where <type_of_component> is one of: component, container or page.
 
 The generators use the same feature-first file organization as the rest of the project, encapsulating components within their own folder.
 
+## More
+
+If you want to add routing for generating pages follow the steps
+In your route file add pages import
+```
+import * as Pages from 'some/dir/pages';
+```
+
+Then leave the bot mark (// BOT: NEXT ROUTE) in place where new routes should be added
+```
+<Provider store={store}>
+    <Router history={history}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Pages.WelcomePage} />
+        <Route path="login" component={Pages.LoginPage} />
+        // BOT: NEXT ROUTE
+        <Route path="*" component={Pages.NotFoundPage} />
+      </Route>
+    </Router>
+  </Provider>
+```
+
+
 ## Configs
 The generators output paths can be configured in two ways.
 
