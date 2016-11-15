@@ -7,10 +7,10 @@ export const {{ constantCase name }}_ACTION = '{{ constantCase name }}_ACTION';
 
 {{#each actionsNames}}
 {{#if sync}}
-const {{ properCase name }}Action = createAction( {{ constantCase name }}_ACTION, data => data );
+const {{ camelCase name }}Action = createAction( {{ constantCase name }}_ACTION, data => data );
 {{/if}}
 {{#if async}}
-const {{ properCase name }}Action = createAction( {{ constantCase name }}_ACTION, (data) => {
+const {{ camelCase name }}Action = createAction( {{ constantCase name }}_ACTION, (data) => {
     // ...
     return Promise.resolve(data)
 })
@@ -21,7 +21,7 @@ const {{ properCase name }}Action = createAction( {{ constantCase name }}_ACTION
 
 export const actions = {
 {{#each actionsNames}}
-    {{ properCase name }}Action,
+    {{ camelCase name }}: {{ camelCase name }}Action,
 {{/each}}
 };
 
@@ -31,12 +31,13 @@ const initialState = {
 };
 
 const {{ camelCase name }}Reducer = (state = initialState, action) => {
-switch (action.type) {
-{{#each actionsNames}}
-    case {{ constantCase name }}_ACTION:
+    switch (action.type) {
+    {{#each actionsNames}}
+        case {{ constantCase name }}_ACTION:
+        return state;
+    {{/each}}
+    }
     return state;
-{{/each}}
-}
 };
 
 export default {{ camelCase name }}Reducer;

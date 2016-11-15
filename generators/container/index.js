@@ -140,7 +140,7 @@ module.exports = {
           pattern: /(BOT: Reducer imports here)/g,
           template:
               `$1
-import {{camelCase name}}Reducer from '{{rootReducerReleativePath}}/{{dashCase name}}-module'`,
+import {{camelCase name}}Reducer from './{{rootReducerReleativePath}}/{{dashCase name}}-module';`,
           abortOnFail: true,
         });
 
