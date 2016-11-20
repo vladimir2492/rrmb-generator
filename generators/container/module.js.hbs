@@ -1,4 +1,4 @@
-import { createAction } from 'redux-action'
+import { createAction, handleActions } from 'redux-action'
 
 {{#each actionsNames}}
 export const {{ constantCase name }}_ACTION = '{{ constantCase name }}_ACTION';
@@ -25,19 +25,28 @@ export const actions = {
 {{/each}}
 };
 
+//Actions that need dispatch reference
+export const complexActions = {
+
+};
+
+//All actions
+export const allActions = {
+    ...actions,
+    ...complexActions,
+};
+
 
 const initialState = {
 // Initial State goes here!
 };
 
-const {{ camelCase name }}Reducer = (state = initialState, action) => {
-    switch (action.type) {
-    {{#each actionsNames}}
-        case {{ constantCase name }}_ACTION:
+const {{ camelCase name }}Reducer = handleActions({
+{{#each actionsNames}}
+    {{ constantCase name }}_ACTION: (state, action) => {
         return state;
-    {{/each}}
-    }
-    return state;
-};
+    },
+{{/each}}
+}, initialState)
 
 export default {{ camelCase name }}Reducer;

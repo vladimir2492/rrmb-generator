@@ -5,7 +5,8 @@ import {{ properCase componentName }}Component from '{{componentReleativePath}}'
 {{#if wantModule}}
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actions } from '{{containerModuleReleativePath}}/{{dashCase name}}-module';
+import {bindComplexActionCreators} from 'rrmb-generator-utils';
+import { actions, complexActions } from '{{containerModuleReleativePath}}/{{dashCase name}}-module';
 {{/if}}
 
 {{#if newComponent}}
@@ -28,10 +29,16 @@ const mapStateToProps = (state) => ({
 
 // mapDispatchToProps :: Dispatch -> {Action}
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(
-    actions,
-    dispatch
-  ),
+  actions: {
+    ...bindActionCreators(
+        actions,
+        dispatch
+    ),
+    ...bindComplexActionCreators(
+        complexActions,
+        dispatch
+    ),
+  }
 });
 {{/if}}
 
