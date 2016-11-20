@@ -1,4 +1,4 @@
-import { createAction, handleActions } from 'redux-action'
+import { createAction, createReducer } from 'redux-action'
 
 {{#each actionsNames}}
 export const {{ constantCase name }}_ACTION = '{{ constantCase name }}_ACTION';
@@ -41,12 +41,12 @@ const initialState = {
 // Initial State goes here!
 };
 
-const {{ camelCase name }}Reducer = handleActions({
+const {{ camelCase name }}Reducer = createReducer(initialState, {
 {{#each actionsNames}}
     {{ constantCase name }}_ACTION: (state, action) => {
         return state;
     },
 {{/each}}
-}, initialState)
+})
 
 export default {{ camelCase name }}Reducer;
