@@ -1,6 +1,6 @@
 {
   "name": "rrmb-generator",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "bin": {
     "generate": "generator-run"
   },
