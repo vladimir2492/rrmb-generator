@@ -43,7 +43,7 @@ const initialState = {
 
 const {{ camelCase name }}Reducer = createReducer(initialState, {
 {{#each actionsNames}}
-    [{{ constantCase name }}_ACTION]: (state, action) => {
+    [{{ constantCase name }}_ACTION]: (actionPayload, state) => {
         return state;
     },
 {{/each}}
